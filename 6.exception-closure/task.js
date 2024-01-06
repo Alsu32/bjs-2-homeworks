@@ -18,15 +18,15 @@ class Triangle {
 	constructor(num1, num2, num3) {
 		if (num1 + num2 < num3 || num2 + num3 < num1 || num1 + num3 < num2) {
 			throw new Error("Треугольник с такими сторонами не существует");
-		} else {
-			this.num1 = num1;
-			this.num2 = num2;
-			this.num3 = num3;
-		}
+		} 
+		this.num1 = num1;
+		this.num2 = num2;
+		this.num3 = num3;
+		
 	} 
 
 	get perimeter() {
-		return +(this.num1 + this.num2 +this.num3).toFixed(3);
+		return +(this.num1 + this.num2 +this.num3);
 	}
 
 	get area() {
@@ -37,11 +37,10 @@ class Triangle {
 }
 
 function getTriangle(num1, num2, num3) {
-	let triangle;
 	try {
-		triangle = new Triangle(num1, num2, num3);
+		return new Triangle(num1, num2, num3);
 	} catch (error) {
-		triangle = {
+		return {
 			get perimeter() {
 				return "Ошибка! Треугольник не существует";
 			},		
@@ -49,7 +48,5 @@ function getTriangle(num1, num2, num3) {
 				return "Ошибка! Треугольник не существует";
 			}
 		};
-	} finally {
-		return triangle;
 	}
 }
